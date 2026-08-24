@@ -1,4 +1,10 @@
-Getting started: https://aws.amazon.com/bedrock/getting-started/
+## Getting started
+
+See the getting started instructions by AWS at: https://aws.amazon.com/bedrock/getting-started/
+
+AWS Bedrock supports authentication via OAuth / User SSO or Key / Secret Pairs. First, select an authentication method then install the required python packages. Use `claude.py` to access Anthropic's Claude models or `openweights.py` to access open weight models via AWS Bedrock.
+
+## OAuth / User SSO
 
 Login to your AWS account from the command line:
 
@@ -12,15 +18,23 @@ Set the default profile for the current session:
 export AWS_PROFILE=your-profile-name
 ```
 
-Install python packages:
+## Key / Secret Pairs
 
-pip:
+```bash
+export AWS_ACCESS_KEY_ID="AWS_ACCESS_KEY_ID"
+export AWS_SECRET_ACCESS_KEY="AWS_SECRET_ACCESS_KEY"
+export AWS_DEFAULT_REGION="us-east-1"
+```
+
+## Install python packages
+
+pip package manager:
 
 ```bash
     pip install "anthropic[bedrock]" boto3 "botocore[crt]"
 ```
 
-uv:
+uv package manager:
 
 ```bash
     uv add "anthropic[bedrock]" boto3 "botocore[crt]"
