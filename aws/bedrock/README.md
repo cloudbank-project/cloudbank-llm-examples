@@ -2,7 +2,7 @@
 
 See the getting started instructions by AWS at: https://aws.amazon.com/bedrock/getting-started/
 
-AWS Bedrock supports authentication via OAuth / User SSO or Key / Secret Pairs. First, select an authentication method then install the required python packages. Use `claude.py` to access Anthropic's Claude models or `openweights.py` to access open weight models via AWS Bedrock.
+AWS Bedrock supports authentication via OAuth / User SSO or Key / Secret Pairs. First, select an authentication method then install the required python packages. Use `claude.py` to access Anthropic's Claude models or `openweights.py` to access open-weights models via AWS Bedrock.
 
 ## OAuth / User SSO
 
