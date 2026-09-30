@@ -1,0 +1,10 @@
+[project]
+name = "azure"
+version = "0.1.0"
+description = "Azure OpenAI Global Batch example"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "azure-identity>=1.19.0",
+    "openai>=1.60.0",
+]
