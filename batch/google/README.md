@@ -4,11 +4,11 @@ See the getting started instructions by Google at: https://docs.cloud.google.com
 
 ## Create the JSONL input file with the prompts
 
-See the the `batch_requests.jsonl` in this directory. Full documentation is available at: https://ai.google.dev/gemini-api/docs/batch-api?utm_source=gemini
+See the `batch_requests.jsonl` in this directory. Full documentation is available at: https://ai.google.dev/gemini-api/docs/batch-api?utm_source=gemini
 
 ## Environment Setup
 
-Install the required dependencies using UV package manager.
+Install the Google Cloud CLI (`gcloud`) and the required dependencies using UV package manager.
 
 ```bash
 uv sync
@@ -18,6 +18,12 @@ Login to your Google Cloud account using the gcloud command-line tool.
 
 ```bash
 gcloud auth login
+```
+
+The Python script authenticates with Application Default Credentials, so also run:
+
+```bash
+gcloud auth application-default login
 ```
 
 Get the project ID.
@@ -51,14 +57,31 @@ Upload the batch inference JSONL file to the Cloud Storage bucket.
 gcloud storage cp batch_requests.jsonl gs://$BUCKET_NAME/inputs/batch_requests.jsonl
 ```
 
-Submit the batch inference job.
+Submit the batch inference job and poll until it finishes (the status is checked every minute).
 
 ```bash
-uv run ./submit_batch.py 
+uv run ./submit_batch.py
 ```
 
-List batch inference results.
+## Retrieve the batch inference results
+
+List the batch inference results.
 
 ```bash
 gcloud storage ls gs://$BUCKET_NAME/outputs/
 ```
+
+Download the results.
+
+```bash
+gcloud storage cp --recursive gs://$BUCKET_NAME/outputs/ ./results/
+```
+
+## Clean up (optional)
+
+Delete the bucket and everything in it.
+
+```bash
+gcloud storage rm --recursive gs://$BUCKET_NAME
+```
+

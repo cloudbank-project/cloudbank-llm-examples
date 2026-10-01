@@ -6,11 +6,11 @@ The Azure CLI (`az`) has no commands for the Azure OpenAI Files and Batch APIs, 
 
 ## Create the JSONL input file with the prompts
 
-See the `batch_requests.jsonl` in this directory. The `model` field on every line must be the name of your **GlobalBatch deployment** (created below as `gpt-4.1-mini-batch`), and all lines must use the same model and URL. The file must be UTF-8 without a Byte Order Mark (BOM). 
+See the `batch_requests.jsonl` in this directory. The `model` field on every line must be the name of your **GlobalBatch deployment** (created below as `gpt-4.1-mini-batch`), and all lines must use the same model and URL. The file must be UTF-8 without a Byte Order Mark (BOM).
 
 ## Environment Setup
 
-Install the required dependencies using UV package manager.
+Install the Azure CLI (`az`) and the required dependencies using UV package manager.
 
 ```bash
 uv sync
@@ -45,7 +45,9 @@ az cognitiveservices account deployment list --name <EXISTING_RESOURCE_NAME> --r
 
 If one is listed, set `DEPLOYMENT_NAME` to its name (and update the `model` field in `batch_requests.jsonl` to match), then skip to the step that gets the endpoint. The resource must have a custom subdomain, so that `https://<RESOURCE_NAME>.openai.azure.com` resolves.
 
-## Create the Foundry resource, project and Global Batch deployment, if they don't already exist.
+## Create the Foundry resource, project and Global Batch deployment
+
+Skip this section if they already exist.
 
 Set the environment variables for the resource group, Foundry resource name, location, and model. See https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/batch for which models support the Global Batch deployment.
 
@@ -105,7 +107,7 @@ az cognitiveservices account deployment create \
 
 ## Upload the batch inference input file and submit the batch inference job
 
-Set the Foundry v1 API endpoint of the resource. 
+Set the Foundry v1 API endpoint of the resource.
 
 ```bash
 export ENDPOINT="https://$RESOURCE_NAME.openai.azure.com/openai/v1/"

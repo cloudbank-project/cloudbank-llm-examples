@@ -17,14 +17,14 @@ export GEMINI_API_KEY="your-ai-studio-api-key"
 
 ## Install python packages
 
-pip:
+pip package manager:
 
 ```bash
-    pip install google-genai
+pip install google-genai
 ```
 
-uv:
+uv package manager:
 
 ```bash
-    uv add google-genai
+uv add google-genai
 ```

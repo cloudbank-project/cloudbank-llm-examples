@@ -8,7 +8,7 @@ Everything in this example is done with the AWS CLI (`aws`).
 
 ## Create the JSONL input file with the prompts
 
-See the `batch_requests.jsonl` in this directory. Each line has a `recordId` and a `modelInput`. The `modelInput` must match the request body of the model's `InvokeModel` API. Bedrock requires a **minimum of 100 records** per job by default. 
+See the `batch_requests.jsonl` in this directory. Each line has a `recordId` and a `modelInput`. The `modelInput` must match the request body of the model's `InvokeModel` API. Bedrock requires a **minimum of 100 records** per job by default.
 
 ## Environment Setup
 
@@ -44,6 +44,7 @@ Create the S3 bucket if it doesn't already exist. The bucket must be in the same
 ```bash
 aws s3 mb s3://$BUCKET_NAME --region $AWS_REGION
 ```
+
 ## Upload the batch inference input file and submit the batch inference job
 
 Upload the batch inference JSONL file to the S3 bucket.
@@ -103,7 +104,7 @@ To cancel a job that is still running:
 aws bedrock stop-model-invocation-job --region $AWS_REGION --job-identifier $JOB_ARN
 ```
 
-## Clean up
+## Clean up (optional)
 
 ```bash
 aws s3 rm s3://$BUCKET_NAME --recursive

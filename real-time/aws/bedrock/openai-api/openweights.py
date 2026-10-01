@@ -7,7 +7,7 @@ client = OpenAI()
 # 2. Use the OpenAI Chat Completions API to call an open-weight model
 #    on AWS Bedrock.
 completion = client.chat.completions.create(
-    model="openai.gpt-oss-120b-1:0",  # your Foundry model deployment name
+    model="openai.gpt-oss-120b-1:0",  # your Bedrock model ID
     messages=[
         {"role": "user", "content": "Hello World!"}
     ]

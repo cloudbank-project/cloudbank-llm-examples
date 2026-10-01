@@ -30,11 +30,11 @@ part of the endpoint host).
 pip package manager:
 
 ```bash
-    pip install anthropic openai
+pip install anthropic openai
 ```
 
 uv package manager:
 
 ```bash
-    uv add anthropic openai
+uv add anthropic openai
 ```

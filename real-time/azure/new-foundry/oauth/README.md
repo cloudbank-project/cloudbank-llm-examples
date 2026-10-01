@@ -27,14 +27,14 @@ export AZURE_FOUNDRY_RESOURCE="<your-resource>"
 
 ## Install python packages
 
-pip:
+pip package manager:
 
 ```bash
-    pip install anthropic openai azure-identity
+pip install anthropic openai azure-identity
 ```
 
-uv:
+uv package manager:
 
 ```bash
-    uv add anthropic openai azure-identity
+uv add anthropic openai azure-identity
 ```

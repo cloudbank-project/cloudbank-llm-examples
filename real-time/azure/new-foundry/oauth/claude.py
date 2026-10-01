@@ -15,7 +15,7 @@ client = AnthropicFoundry(
 
 # 2. Use Anthropic's specific Messages API structure
 response = client.messages.create(
-    model="claude-haiku-4-5",
+    model="claude-haiku-4-5",  # your Foundry model deployment name
     max_tokens=1024,
     messages=[
         {"role": "user", "content": "Hello World!"}

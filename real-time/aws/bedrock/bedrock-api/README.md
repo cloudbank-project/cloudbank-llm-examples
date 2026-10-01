@@ -2,9 +2,11 @@
 
 See the getting started instructions by AWS at: https://aws.amazon.com/bedrock/getting-started/
 
-AWS Bedrock supports authentication via Short and Long Term Bedrock API Keys, OAuth / User SSO or Key / Secret Pairs. First, select an authentication method then install the required python packages. Use `claude.py` to access Anthropic's Claude models or `openweights.py` to access open-weights models via AWS Bedrock.
+This directory authenticates to AWS Bedrock with Short and Long Term Bedrock API Keys, OAuth / User SSO or Key / Secret Pairs. First, select an authentication method then install the required python packages. Use `claude.py` to access Anthropic's Claude models or `openweights.py` to access open-weights models via AWS Bedrock.
 
 ## Short and Long Term Bedrock API Keys
+
+ Note short term API keys are only valid in the region they were created in.
 
 ```bash
 export AWS_BEARER_TOKEN_BEDROCK="bedrock-api-key-<bedrock-api-key>"
@@ -37,11 +39,11 @@ export AWS_DEFAULT_REGION="us-east-1"
 pip package manager:
 
 ```bash
-    pip install "anthropic[bedrock]" boto3 "botocore[crt]"
+pip install "anthropic[bedrock]" boto3 "botocore[crt]"
 ```
 
 uv package manager:
 
 ```bash
-    uv add "anthropic[bedrock]" boto3 "botocore[crt]"
+uv add "anthropic[bedrock]" boto3 "botocore[crt]"
 ```

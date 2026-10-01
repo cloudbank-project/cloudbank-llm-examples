@@ -19,6 +19,12 @@ gcloud config configurations create your-profile-name
 gcloud config configurations activate your-profile-name
 ```
 
+To look up your project ID:
+
+```bash
+gcloud config get-value project
+```
+
 ## Environment variables
 
 All three scripts read the Google Cloud project ID from an environment variable
@@ -33,14 +39,14 @@ e.g. `my-cloudbank-project`.
 
 ## Install python packages
 
-pip:
+pip package manager:
 
 ```bash
-    pip install "anthropic[vertex]" openai google-genai google-auth
+pip install "anthropic[vertex]" openai google-genai google-auth
 ```
 
-uv:
+uv package manager:
 
 ```bash
-    uv add "anthropic[vertex]" openai google-genai google-auth
+uv add "anthropic[vertex]" openai google-genai google-auth
 ```
