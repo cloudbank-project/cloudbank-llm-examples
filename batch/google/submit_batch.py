@@ -3,7 +3,7 @@ import time
 from google import genai
 from google.genai.types import CreateBatchJobConfig
 
-# Set vertexai=True to use Vertex AI on Google Cloud
+# Set vertexai=True to use Google Agent Platform
 client = genai.Client(vertexai=True, project=os.getenv("PROJECT_ID"), location=os.getenv("LOCATION"))
 
 batch_job = client.batches.create(

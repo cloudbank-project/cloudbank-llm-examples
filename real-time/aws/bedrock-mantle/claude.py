@@ -1,6 +1,6 @@
 from anthropic import AnthropicBedrockMantle
 
-# 1. Initialize the specialized Anthropic client for the Amazon Bedrock Mantle endpoint
+# 1. Initialize the specialized Anthropic client for the AWS Bedrock Mantle endpoint
 client = AnthropicBedrockMantle(
     aws_region="us-east-1"
 )

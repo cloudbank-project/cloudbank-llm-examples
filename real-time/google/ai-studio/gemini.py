@@ -3,9 +3,9 @@ import os
 from google import genai
 
 # 1. Initialize the client for Google AI Studio -- reads GEMINI_API_KEY for the
-#    AI Studio API key
+#    Google Gen AI API key
 client = genai.Client(
-    api_key=os.environ["GEMINI_API_KEY"],  # your Google AI Studio API key
+    api_key=os.environ["GEMINI_API_KEY"],  # your Google Gen AI API key
 )
 
 # 2. Create a chat session

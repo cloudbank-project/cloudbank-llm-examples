@@ -1,6 +1,6 @@
 from anthropic import AnthropicFoundry
 
-# 1. Initialize the Anthropic client for Microsoft Foundry -- reads
+# 1. Initialize the Anthropic client for Azure Foundry -- reads
 #    ANTHROPIC_FOUNDRY_API_KEY and ANTHROPIC_FOUNDRY_RESOURCE
 client = AnthropicFoundry()
 

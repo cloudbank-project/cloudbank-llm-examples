@@ -2,7 +2,7 @@ import os
 
 from google import genai
 
-# 1. Initialize the client for Google Cloud Agent Platform -- reads
+# 1. Initialize the client for Google Agent Platform -- reads
 #    GOOGLE_CLOUD_PROJECT for the Google Cloud project ID
 client = genai.Client(
     vertexai=True,

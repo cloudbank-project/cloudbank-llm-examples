@@ -3,7 +3,7 @@ import os
 from anthropic import AnthropicFoundry
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
-# 1. Initialize the specialized Anthropic client for Microsoft Foundry --
+# 1. Initialize the specialized Anthropic client for Azure Foundry --
 #    reads AZURE_FOUNDRY_RESOURCE for the Foundry resource name
 token_provider = get_bearer_token_provider(
     DefaultAzureCredential(), "https://ai.azure.com/.default"

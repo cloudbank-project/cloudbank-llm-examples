@@ -4,7 +4,7 @@ import google.auth
 import google.auth.transport.requests
 from openai import OpenAI
 
-# 1. Read GOOGLE_CLOUD_PROJECT to build the Vertex AI MaaS endpoint
+# 1. Read GOOGLE_CLOUD_PROJECT to build the Google Agent Platform MaaS endpoint
 project_id = os.environ["GOOGLE_CLOUD_PROJECT"]  # your Google Cloud project ID
 location = "us-central1"
 
@@ -15,7 +15,7 @@ credentials, _ = google.auth.default(
 auth_req = google.auth.transport.requests.Request()
 credentials.refresh(auth_req)
 
-# 3. Point the OpenAI SDK to the Vertex AI MaaS endpoint
+# 3. Point the OpenAI SDK to the Google Agent Platform MaaS endpoint
 client = OpenAI(
     base_url=f"https://{location}-aiplatform.googleapis.com/v1beta1/projects/{project_id}/locations/{location}/endpoints/openapi",
     api_key=credentials.token,

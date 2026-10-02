@@ -2,9 +2,9 @@
 
 See the getting started instructions by Google at: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start
 
-This directory authenticates to the Google Cloud Agent Platform (Vertex AI) with OAuth (Application Default Credentials). Use `gemini.py` to access Gemini models, `claude.py` to access Anthropic's Claude models or `openweights.py` to access open-weights model deployments via the Vertex AI Model-as-a-Service endpoint.
+This directory authenticates to Google Agent Platform with OAuth / User SSO (Application Default Credentials). Use `gemini.py` to access Gemini models, `claude.py` to access Anthropic's Claude models or `openweights.py` to access open-weights model deployments via the Google Agent Platform Model-as-a-Service endpoint.
 
-## Authentication
+## OAuth / User SSO
 
 Log in to your Google Cloud account from the command line (any credential supported by Application Default Credentials also works, e.g. a service account):
 

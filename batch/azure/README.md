@@ -1,6 +1,6 @@
 ## Getting started
 
-See the getting started instructions for Microsoft Foundry (new) by Azure at: https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/batch
+See the getting started instructions for Azure Foundry at: https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/batch
 
 The Azure CLI (`az`) has no commands for the Azure OpenAI Files and Batch APIs, so this example uses `az` for everything it can (login, Foundry resource and project creation, model deployment, role assignment) and the Python SDKs for uploading the file and running the batch job.
 
@@ -31,7 +31,7 @@ az account set --subscription "<YOUR_SUBSCRIPTION_ID_OR_NAME>"
 
 ## Check if the Foundry resources already exist
 
-If you already have a Microsoft Foundry resource, look up its name and resource group instead of creating new ones. (In the new Foundry, resources are of kind `AIServices`; older standalone Azure OpenAI resources are kind `OpenAI`.)
+If you already have an Azure Foundry resource, look up its name and resource group instead of creating new ones. (In the new Foundry, resources are of kind `AIServices`; older standalone Azure OpenAI resources are kind `OpenAI`.)
 
 ```bash
 az cognitiveservices account list --query "[?kind=='AIServices' || kind=='OpenAI'].{name:name, kind:kind, resourceGroup:resourceGroup, location:location}" --output table

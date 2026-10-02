@@ -2,7 +2,7 @@ import os
 
 from anthropic import AnthropicVertex
 
-# 1. Initialize the specialized Anthropic client for Vertex AI --
+# 1. Initialize the specialized Anthropic client for Google Agent Platform --
 #    reads GOOGLE_CLOUD_PROJECT for the Google Cloud project ID
 client = AnthropicVertex(
     project_id=os.environ["GOOGLE_CLOUD_PROJECT"],  # your Google Cloud project ID

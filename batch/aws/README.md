@@ -1,6 +1,6 @@
 ## Getting started
 
-See the getting started instructions for Amazon Bedrock batch inference at: https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html
+See the getting started instructions for AWS Bedrock batch inference at: https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html
 
 **You must first contact CloudBank Support to have the BedrockBatchInferenceRole role created and the necessary permissions assigned to your account.**
 

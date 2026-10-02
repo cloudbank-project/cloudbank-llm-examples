@@ -2,9 +2,9 @@
 
 See the getting started instructions by AWS at: https://aws.amazon.com/bedrock/getting-started/
 
-This directory authenticates to AWS Bedrock with an OpenAI-Compatible API Key. First, install the required python packages. Use `openweights.py` to access open-weights models via AWS Bedrock.
+This directory authenticates to AWS Bedrock using the OpenAI API. First, install the required python packages. Use `openweights.py` to access open-weights models via AWS Bedrock.
 
-## OpenAI-Compatible API Key
+## OpenAI API
 
 Get the API key and region from the AWS Bedrock console. Note short term API keys are only valid in the region they were created in.
 

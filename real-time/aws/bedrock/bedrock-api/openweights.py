@@ -1,6 +1,6 @@
 import boto3
 
-# 1. Initialize the Bedrock Runtime client for Amazon Bedrock
+# 1. Initialize the Bedrock Runtime client for AWS Bedrock
 client = boto3.client("bedrock-runtime", region_name="us-east-1")
 
 # 2. Use Bedrock's Converse API to call an open-weight model
