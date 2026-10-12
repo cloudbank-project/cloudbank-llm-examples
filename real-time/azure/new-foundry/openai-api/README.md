@@ -6,11 +6,11 @@ This directory authenticates to Azure Foundry using the OpenAI API. Use `chatgpt
 
 ## Create the Foundry resources
 
-If you don't already have a Foundry resource, project and model deployments, follow the Azure CLI instructions in [../SETUP.md](../SETUP.md), which also shows how to get the API key.
+If you don't already have a Foundry resource, project and model deployments, follow the Azure CLI instructions in [SETUP.md](../SETUP.md), which also shows how to get the API key.
 
 ## OpenAI API
 
-Get the API key and endpoint with the `az` commands in [../SETUP.md](../SETUP.md), or from the Azure Foundry portal under your resource's **Keys and Endpoint** page.
+Get the API key and endpoint with the `az` commands in [SETUP.md](../SETUP.md), or from the Azure Foundry portal under your resource's **Keys and Endpoint** page.
 
 Set the following environment variables. The `OPENAI_*` variables are read by the
 `openai` SDK (used by `chatgpt.py`, `grok.py` and `openweights.py`), and the
@@ -29,7 +29,7 @@ export MODEL="<your-model-deployment>"
 `chatgpt.py`, `claude-haiku-4-5` for `claude.py`); all scripts read it.
 
 `AZURE_FOUNDRY_RESOURCE` is the Foundry resource name (the host prefix of your
-endpoint), the same variable used in [../SETUP.md](../SETUP.md); set it first, e.g.
+endpoint), the same variable used in [SETUP.md](../SETUP.md); set it first, e.g.
 `export AZURE_FOUNDRY_RESOURCE="<your-resource>"`.
 `OPENAI_BASE_URL` is your resource endpoint with `/openai/v1/` appended.
 

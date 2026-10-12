@@ -6,7 +6,7 @@ This directory authenticates to Azure Foundry with OAuth / User SSO (Microsoft E
 
 ## Create the Foundry resources
 
-If you don't already have a Foundry resource, project and model deployments, follow the Azure CLI instructions in [../SETUP.md](../SETUP.md). The `AZURE_FOUNDRY_RESOURCE` variable used there is the same one set below.
+If you don't already have a Foundry resource, project and model deployments, follow the Azure CLI instructions in [SETUP.md](../SETUP.md). The `AZURE_FOUNDRY_RESOURCE` variable used there is the same one set below.
 
 ## OAuth / User SSO
 
