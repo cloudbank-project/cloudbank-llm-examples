@@ -37,13 +37,13 @@ If you already have an Azure Foundry resource, look up its name and resource gro
 az cognitiveservices account list --query "[?kind=='AIServices' || kind=='OpenAI'].{name:name, kind:kind, resourceGroup:resourceGroup, location:location}" --output table
 ```
 
-Then set `RESOURCE_GROUP`, `RESOURCE_NAME` and `LOCATION` below to the values listed. Check whether it already has a `GlobalBatch` deployment.
+Then set `AZURE_RESOURCE_GROUP`, `AZURE_FOUNDRY_RESOURCE` and `LOCATION` below to the values listed. Check whether it already has a `GlobalBatch` deployment.
 
 ```bash
-az cognitiveservices account deployment list --name <EXISTING_RESOURCE_NAME> --resource-group <EXISTING_RESOURCE_GROUP> --query "[].{name:name, model:properties.model.name, sku:sku.name}" --output table
+az cognitiveservices account deployment list --name <EXISTING_RESOURCE> --resource-group <EXISTING_RESOURCE_GROUP> --query "[].{name:name, model:properties.model.name, sku:sku.name}" --output table
 ```
 
-If one is listed, set `DEPLOYMENT_NAME` to its name (and update the `model` field in `batch_requests.jsonl` to match), then skip to the step that gets the endpoint. The resource must have a custom subdomain, so that `https://<RESOURCE_NAME>.openai.azure.com` resolves.
+If one is listed, set `DEPLOYMENT_NAME` to its name (and update the `model` field in `batch_requests.jsonl` to match), then skip to the step that gets the endpoint. The resource must have a custom subdomain, so that `https://<AZURE_FOUNDRY_RESOURCE>.openai.azure.com` resolves.
 
 ## Create the Foundry resource, project and Global Batch deployment
 
@@ -52,8 +52,8 @@ Skip this section if they already exist.
 Set the environment variables for the resource group, Foundry resource name, location, and model. See https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/batch for which models support the Global Batch deployment.
 
 ```bash
-export RESOURCE_GROUP="<YOUR_RESOURCE_GROUP>"
-export RESOURCE_NAME="<YOUR_UNIQUE_RESOURCE_NAME>"
+export AZURE_RESOURCE_GROUP="<YOUR_RESOURCE_GROUP>"
+export AZURE_FOUNDRY_RESOURCE="<YOUR_UNIQUE_RESOURCE>"
 export LOCATION="eastus2"
 export DEPLOYMENT_NAME="gpt-4.1-mini-batch"
 export MODEL="gpt-4.1-mini"
@@ -63,19 +63,19 @@ export MODEL_VERSION="2025-04-14"
 Create the resource group if it doesn't already exist.
 
 ```bash
-az group create --name $RESOURCE_GROUP --location $LOCATION
+az group create --name $AZURE_RESOURCE_GROUP --location $LOCATION
 ```
 
-Create the Foundry resource (kind `AIServices`) with project management enabled. The `--custom-domain` flag is required so the resource gets the `https://<RESOURCE_NAME>.openai.azure.com` endpoint that batch needs and so Microsoft Entra token authentication works.
+Create the Foundry resource (kind `AIServices`) with project management enabled. The `--custom-domain` flag is required so the resource gets the `https://<AZURE_FOUNDRY_RESOURCE>.openai.azure.com` endpoint that batch needs and so Microsoft Entra token authentication works.
 
 ```bash
 az cognitiveservices account create \
-  --name $RESOURCE_NAME \
-  --resource-group $RESOURCE_GROUP \
+  --name $AZURE_FOUNDRY_RESOURCE \
+  --resource-group $AZURE_RESOURCE_GROUP \
   --location $LOCATION \
   --kind AIServices \
   --sku S0 \
-  --custom-domain $RESOURCE_NAME \
+  --custom-domain $AZURE_FOUNDRY_RESOURCE \
   --allow-project-management
 ```
 
@@ -83,9 +83,9 @@ Create a Foundry project in the resource. The project is what you see in the new
 
 ```bash
 az cognitiveservices account project create \
-  --name $RESOURCE_NAME \
-  --resource-group $RESOURCE_GROUP \
-  --project-name ${RESOURCE_NAME}-project \
+  --name $AZURE_FOUNDRY_RESOURCE \
+  --resource-group $AZURE_RESOURCE_GROUP \
+  --project-name ${AZURE_FOUNDRY_RESOURCE}-project \
   --location $LOCATION
 ```
 
@@ -95,8 +95,8 @@ Deploy the model with the `GlobalBatch` SKU. Check that your region supports Glo
 
 ```bash
 az cognitiveservices account deployment create \
-  --name $RESOURCE_NAME \
-  --resource-group $RESOURCE_GROUP \
+  --name $AZURE_FOUNDRY_RESOURCE \
+  --resource-group $AZURE_RESOURCE_GROUP \
   --deployment-name $DEPLOYMENT_NAME \
   --model-name $MODEL \
   --model-version $MODEL_VERSION \
@@ -110,7 +110,7 @@ az cognitiveservices account deployment create \
 Set the Foundry v1 API endpoint of the resource.
 
 ```bash
-export ENDPOINT="https://$RESOURCE_NAME.openai.azure.com/openai/v1/"
+export ENDPOINT="https://$AZURE_FOUNDRY_RESOURCE.openai.azure.com/openai/v1/"
 ```
 
 Upload the input file (set to expire after 14 days), submit the batch inference job, poll until it finishes, and download the results. The output is written to `batch_output.jsonl` (and failed requests to `batch_errors.jsonl`). Responses are not returned in input order; match them using `custom_id`.
@@ -124,7 +124,7 @@ uv run ./submit_batch.py
 Delete the project first (the resource can't be deleted while it has nested projects), then the resource, and purge it so the name can be reused. Deleting the resource also removes its model deployments.
 
 ```bash
-az cognitiveservices account project delete --name $RESOURCE_NAME --resource-group $RESOURCE_GROUP --project-name ${RESOURCE_NAME}-project
-az cognitiveservices account delete --name $RESOURCE_NAME --resource-group $RESOURCE_GROUP
-az cognitiveservices account purge --name $RESOURCE_NAME --resource-group $RESOURCE_GROUP --location $LOCATION
+az cognitiveservices account project delete --name $AZURE_FOUNDRY_RESOURCE --resource-group $AZURE_RESOURCE_GROUP --project-name ${AZURE_FOUNDRY_RESOURCE}-project
+az cognitiveservices account delete --name $AZURE_FOUNDRY_RESOURCE --resource-group $AZURE_RESOURCE_GROUP
+az cognitiveservices account purge --name $AZURE_FOUNDRY_RESOURCE --resource-group $AZURE_RESOURCE_GROUP --location $LOCATION
 ```

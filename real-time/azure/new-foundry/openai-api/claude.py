@@ -1,3 +1,5 @@
+import os
+
 from anthropic import AnthropicFoundry
 
 # 1. Initialize the Anthropic client for Azure Foundry -- reads
@@ -6,7 +8,7 @@ client = AnthropicFoundry()
 
 # 2. Use Anthropic's specific Messages API structure
 response = client.messages.create(
-    model="claude-haiku-4-5",  # your Foundry model deployment name
+    model=os.environ["MODEL"],  # your Foundry model deployment name
     max_tokens=1024,
     messages=[
         {"role": "user", "content": "Hello World!"}

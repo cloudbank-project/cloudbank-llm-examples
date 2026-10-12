@@ -19,7 +19,7 @@ client = AzureOpenAI(
 
 # 2. Send the "Hello World" message to your deployed open-weights model
 response = client.chat.completions.create(
-    model="Ministral-3B",  # your Foundry model deployment name
+    model=os.environ["MODEL"],  # your Foundry model deployment name
     messages=[
         {"role": "user", "content": "Hello World!"}
     ]

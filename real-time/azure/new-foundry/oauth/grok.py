@@ -17,7 +17,7 @@ client = OpenAI(
 
 # 2. Use the OpenAI Chat Completions API to call a Grok deployment on Azure Foundry
 response = client.chat.completions.create(
-    model="grok-4.6",  # your Foundry model deployment name
+    model=os.environ["MODEL"],  # your Foundry model deployment name
     messages=[
         {"role": "user", "content": "Hello World!"}
     ]

@@ -17,7 +17,7 @@ client = AzureOpenAI(
 
 # 2. Send the "Hello World" message to your deployed GPT model
 response = client.chat.completions.create(
-    model="gpt-5.6-luna",  # your Azure OpenAI deployment name
+    model=os.environ["MODEL"],  # your Foundry model deployment name
     messages=[
         {"role": "user", "content": "Hello World!"}
     ]

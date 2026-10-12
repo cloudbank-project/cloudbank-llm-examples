@@ -8,7 +8,7 @@ token_provider = get_bearer_token_provider(
     DefaultAzureCredential(), "https://ai.azure.com/.default"
 )
 
-# Foundry v1 API endpoint: https://<RESOURCE_NAME>.openai.azure.com/openai/v1/
+# Foundry v1 API endpoint: https://<AZURE_FOUNDRY_RESOURCE>.openai.azure.com/openai/v1/
 client = OpenAI(
     base_url=os.getenv("ENDPOINT"),
     api_key=token_provider,
